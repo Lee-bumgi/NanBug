@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta property="og:title" content="Rhythm" />
+  <meta property="og:description"
+    content="A vertical scrolling rhythm game where you have to hit the notes falling down, which will appear according to the music." />
+  <meta property="og:url" content="https://chloeliang.github.io/rhythm-game/" />
+  <meta property="og:image" content="https://res.cloudinary.com/nliangxin/image/upload/v1543036731/rhythm.png" />
+  <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/dusk/50/ecf0f1/musical-notes.png" />
+  <link href="https://fonts.googleapis.com/css?family=Playball" rel="stylesheet" />
+
+  <!-- Flask 경로 -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <!-- Live Server 경로 -->
+  <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+  <title>Game</title>
+</head>
+
+<body>
+  <audio class="song" src="../static/media/music.mp3"></audio>
+
+  <!-- 6번 줄 -->
+  <audio class="play_audio mi_6-000 f0" src="../static/media/1-000_mi.mp3"></audio>
+  <audio class="play_audio fa_6-100 f1" src="../static/media/1-100_fa.mp3"></audio>
+  <audio class="play_audio fa_shap_6-010 f2" src="../static/media/1-010_fa_shap.mp3"></audio>
+  <audio class="play_audio sol_6-001 f3" src="../static/media/1-001_sol.mp3"></audio>
+
+  <!-- 5번 줄 -->
+  <audio class="play_audio la_5-000 e0" src="../static/media/2-000_la.mp3"></audio>
+  <audio class="play_audio la_shap_5-100 e1" src="../static/media/2-100_la_shap.mp3"></audio>
+  <audio class="play_audio si_5-010 e2" src="../static/media/2-010_si.mp3"></audio>
+  <audio class="play_audio do_5-001 e3" src="../static/media/2-001_do.mp3"></audio>
+  
+  <!-- 4번 줄 -->
+  <audio class="play_audio re_4-000 d0" src="../static/media/3-000_re.mp3"></audio>
+  <audio class="play_audio re_shap_4-100 d1" src="../static/media/3-100_re_shap.mp3"></audio>
+  <audio class="play_audio mi_4-010 d2" src="../static/media/3-010_mi.mp3"></audio>
+  <audio class="play_audio fa_4-001 d3" src="../static/media/3-001_fa.mp3"></audio>
+
+  <!-- 3 번 줄 -->
+  <audio class="play_audio sol_3-000 c0" src="../static/media/4-000_sol.mp3"></audio>
+  <audio class="play_audio sol_shap_3-100 c1" src="../static/media/4-100_sol_shap.mp3"></audio>
+  <audio class="play_audio la_3-010 c2" src="../static/media/4-010_la.mp3"></audio>
+  <audio class="play_audio la_shap_3-001 c3" src="../static/media/4-001_la_shap.mp3"></audio>
+
+  <!-- 2번 줄 -->
+  <audio class="play_audio si_2-000 b0" src="../static/media/5-000_si.mp3"></audio>
+  <audio class="play_audio do_2-100 b1" src="../static/media/5-100_do.mp3"></audio>
+  <audio class="play_audio do_shap_2-010 b2" src="../static/media/5-010_do_shap.mp3"></audio>
+  <audio class="play_audio re_2-001 b3" src="../static/media/5-001_re.mp3"></audio>
+
+  <!-- 1번 줄 -->
+  <audio class="play_audio mi_1-000 a0" src="../static/media/6-000_mi.mp3"></audio>
+  <audio class="play_audio fa_1-100 a1" src="../static/media/6-100_fa.mp3"></audio>
+  <audio class="play_audio fa_shap_1-010 a2" src="../static/media/6-010_fa_shap.mp3"></audio>
+  <audio class="play_audio sol_1-001 a3" src="../static/media/6-001_sol.mp3"></audio>
+
+  <main>
+    <div class="test_div">
+      <button class="test test_s" onclick="apply_s">S</button>
+      <button class="test test_d" onclick="apply_d">D</button>
+      <button class="test test_f" onclick="apply_f">F</button>
+      <button class="test test_sp" onclick="apply_sp">SP</button>
+      <button class="test test_j" onclick="apply_j">J</button>
+      <button class="test test_k" onclick="apply_k">K</button>
+      <button class="test test_l" onclick="apply_l">L</button>
+    </div>
+
+
+    <div class="game">
+      <div class="hit">
+        <div class="hit__combo"></div>
+        <div class="hit__accuracy"></div>
+      </div>
+
+      <div class="track-container"></div>
+
+      <div class="key-container">
+        <div class="key key--s key--blue">
+          <div class="keypress keypress--blue"></div>
+          <span>S</span>
+        </div>
+        <div class="key key--d key--red">
+          <div class="keypress keypress--red"></div>
+          <span>D</span>
+        </div>
+        <div class="key key--f key--blue">
+          <div class="keypress keypress--blue"></div>
+          <span>F</span>
+        </div>
+        <div class="key key--space key--orange">
+          <div class="keypress keypress--orange"></div>
+          <span>Space</span>
+        </div>
+        <div class="key key--j key--blue">
+          <div class="keypress keypress--blue"></div>
+          <span>J</span>
+        </div>
+        <div class="key key--k key--red">
+          <div class="keypress keypress--red"></div>
+          <span>K</span>
+        </div>
+        <div class="key key--l key--blue">
+          <div class="keypress keypress--blue"></div>
+          <span>L</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div>
+        <h1>Air Guitar</h1>
+        <p>
+          Made with <span class="heart">&#x2764;</span> by
+          <span>NaNBug</span>
+        </p>
+        <a class="author" target="__blank" href="https://github.com/ChloeLiang/rhythm-game">GitHub Repo</a>
+      </div>
+
+      <div class="menu__song">
+        <h2>Your Name OST - Kataware Doki</h2>
+        <div>
+          <p>Original song composed by <span>Yojiro Noda</span></p>
+          <p>
+            Piano synthesia version composed by
+            <a class="author" target="__blank" href="http://www.theishter.com/">Theishter</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="menu__config">
+        <div class="config__speed">
+          <h2>Speed</h2>
+          <div>
+            <a class="btn btn--small btn--selected" href="#">1x</a>
+            <a class="btn btn--small" href="#">2x</a>
+            <a class="btn btn--small" href="#">3x</a>
+          </div>
+        </div>
+        <div class="config__challenge">
+          <h2>Challenge</h2>
+          <div><a class="btn btn--small" href="#">Fade</a></div>
+        </div>
+      </div>
+
+      <div class="menu_start">
+        <a class="btn btn--primary btn--start" href="#">Start</a>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary__timer"></div>
+      <div class="summary__result">
+        <h2 class="result__heading">Clear</h2>
+        <div class="result__accuracy perfect">
+          <p class="accuracy__heading">Perfect</p>
+          <span>:</span>
+          <p class="accuracy__count perfect__count"></p>
+        </div>
+        <div class="result__accuracy good">
+          <p class="accuracy__heading">Good</p>
+          <span>:</span>
+          <p class="accuracy__count good__count"></p>
+        </div>
+        <div class="result__accuracy bad">
+          <p class="accuracy__heading">Bad</p>
+          <span>:</span>
+          <p class="accuracy__count bad__count"></p>
+        </div>
+        <div class="result__accuracy miss">
+          <p class="accuracy__heading">Miss</p>
+          <span>:</span>
+          <p class="accuracy__count miss__count"></p>
+        </div>
+        <div class="result__accuracy combo">
+          <p class="accuracy__heading">Max Combo</p>
+          <span>:</span>
+          <p class="accuracy__count combo__count"></p>
+        </div>
+        <div class="result__accuracy score">
+          <p class="accuracy__heading">Score</p>
+          <span>:</span>
+          <p class="accuracy__count score__count"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="{{ url_for('static', filename='scripts/song.js') }}"></script>
+  <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+
+  <!-- <script src="{{ url_for('static', filename='scripts/key.js') }}"></script> -->
+  <!-- <script src="{{ url_for('static', filename='scripts/key_ver2.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='scripts/key_ver3.js') }}"></script>
+
+  <!-- Live Server 경로 -->
+  <!-- <script src="../static/scripts/song.js"></script> -->
+  <!-- <script src="../static/scripts/script.js"></script> -->
+  
+  <!-- <script src="../static/scripts/key.js"></script> -->
+  <!-- <script src="../static/scripts/key_ver2.js"></script> -->
+  <!-- <script src="../static/scripts/key_ver3.js"></script> -->
+</body>
+
+</html>
+
+<!-- 
+handleKey(key, type) {
+  if (!this.state.keyCodes.includes(key)) return null;
+  if (type === "keydown") {
+    if (key === this.state.keyCodes[0]) {
+      $("#button-container-1").addClass("pressed"); 
+      this.playSound();
+      // Change button styling and play drum hi-hat sound to show player the button is being activated :)
+
+      this.checkScore(1); 
+      this.trackTime(1);
+      // Invoked with the column number
+    }
+  }
+} -->
