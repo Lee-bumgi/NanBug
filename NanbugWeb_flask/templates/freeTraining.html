@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 기본 경로 -->
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/train_style.css"> -->
+
+    <!-- Flask 경로 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/train_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pop.css') }}">
+</head>
+
+<body>
+    <!-- 6번 줄 -->
+  <audio class="play_audio mi_6-000 f0" src="../static/media/1-000_mi.mp3"></audio>
+  <audio class="play_audio fa_6-100 f1" src="../static/media/1-100_fa.mp3"></audio>
+  <audio class="play_audio fa_shap_6-010 f2" src="../static/media/1-010_fa_shap.mp3"></audio>
+  <audio class="play_audio sol_6-001 f3" src="../static/media/1-001_sol.mp3"></audio>
+
+  <!-- 5번 줄 -->
+  <audio class="play_audio la_5-000 e0" src="../static/media/2-000_la.mp3"></audio>
+  <audio class="play_audio la_shap_5-100 e1" src="../static/media/2-100_la_shap.mp3"></audio>
+  <audio class="play_audio si_5-010 e2" src="../static/media/2-010_si.mp3"></audio>
+  <audio class="play_audio do_5-001 e3" src="../static/media/2-001_do.mp3"></audio>
+  
+  <!-- 4번 줄 -->
+  <audio class="play_audio re_4-000 d0" src="../static/media/3-000_re.mp3"></audio>
+  <audio class="play_audio re_shap_4-100 d1" src="../static/media/3-100_re_shap.mp3"></audio>
+  <audio class="play_audio mi_4-010 d2" src="../static/media/3-010_mi.mp3"></audio>
+  <audio class="play_audio fa_4-001 d3" src="../static/media/3-001_fa.mp3"></audio>
+
+  <!-- 3 번 줄 -->
+  <audio class="play_audio sol_3-000 c0" src="../static/media/4-000_sol.mp3"></audio>
+  <audio class="play_audio sol_shap_3-100 c1" src="../static/media/4-100_sol_shap.mp3"></audio>
+  <audio class="play_audio la_3-010 c2" src="../static/media/4-010_la.mp3"></audio>
+  <audio class="play_audio la_shap_3-001 c3" src="../static/media/4-001_la_shap.mp3"></audio>
+
+  <!-- 2번 줄 -->
+  <audio class="play_audio si_2-000 b0" src="../static/media/5-000_si.mp3"></audio>
+  <audio class="play_audio do_2-100 b1" src="../static/media/5-100_do.mp3"></audio>
+  <audio class="play_audio do_shap_2-010 b2" src="../static/media/5-010_do_shap.mp3"></audio>
+  <audio class="play_audio re_2-001 b3" src="../static/media/5-001_re.mp3"></audio>
+
+  <!-- 1번 줄 -->
+  <audio class="play_audio mi_1-000 a0" src="../static/media/6-000_mi.mp3"></audio>
+  <audio class="play_audio fa_1-100 a1" src="../static/media/6-100_fa.mp3"></audio>
+  <audio class="play_audio fa_shap_1-010 a2" src="../static/media/6-010_fa_shap.mp3"></audio>
+  <audio class="play_audio sol_1-001 a3" src="../static/media/6-001_sol.mp3"></audio>
+
+
+    <div class="container">
+        <a href="/" class="backspace bbutton">뒤로 가기</a>
+        <div class="train_Video">
+            <video autoplay loop muted>
+                <source src="../static/video/white.mp4" type="video/mp4">
+            </video>
+            <div class="train_text-box">
+                <h1>Air Guitar</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="img-group g">              
+        <p class="text"></p>
+        <!-- <img src="../static/picture/B.png" alt=""> -->
+        <img id="code_C" src="../static/picture/C.png" alt="">
+        <img id="code_D" src="../static/picture/D.png" alt="">
+        <img id="code_E" src="../static/picture/E.png" alt="">
+        <img id="code_F" src="../static/picture/F.png" alt="">
+        <img id="code_G" src="../static/picture/G.png" alt="">
+        <img id="code_A" src="../static/picture/A.png" alt="">
+    </div>
+    <div class="frame">
+        <div class="center">
+            <button class="button button-first" data-type="square">
+                Click on me
+            </button>
+            <button class="button button-second" data-type="circle">
+                No, click on me
+            </button>
+        </div>
+    </div>
+
+    <!-- 기본 경로  -->
+    <!-- <script src="../static/js/highlight.js"></script> -->
+    <!-- <script src="../static/js/key_ver3.js"></script> -->
+    <!-- <script src="pop.js"></script> -->
+    
+    <!-- Flask 경로 -->
+    <script src="{{ url_for('static', filename='js/highlight.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/key_ver3.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/code_list.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pop.js') }}"></script>
+
+
+</body>
+
+</html>
