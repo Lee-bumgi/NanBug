@@ -7,14 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <!-- 기본 경로 -->
-    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
-    <!-- <link rel="stylesheet" href="../static/css/train_style.css"> -->
-
     <!-- Flask 경로 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/train_style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pop.css') }}">
+
+    <!-- 키 입력시 팡 튀어나오는 거 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popinto.css') }}">
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/easing/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenLite.min.js"></script>
+    <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-d538fb72-cd2c-e84e-f1eb-ff8472d6a75b" crossorigin=""></script>
 </head>
 
 <body>
@@ -68,7 +71,7 @@
     </div>
 
     <div class="img-group g">              
-        <p class="text"></p>
+
         <!-- <img src="../static/picture/B.png" alt=""> -->
         <img id="code_C" src="../static/picture/C.png" alt="">
         <img id="code_D" src="../static/picture/D.png" alt="">
@@ -77,27 +80,24 @@
         <img id="code_G" src="../static/picture/G.png" alt="">
         <img id="code_A" src="../static/picture/A.png" alt="">
     </div>
-    <div class="frame">
-        <div class="center">
-            <button class="button button-first" data-type="square">
-                Click on me
-            </button>
-            <button class="button button-second" data-type="circle">
-                No, click on me
-            </button>
-        </div>
-    </div>
 
-    <!-- 기본 경로  -->
-    <!-- <script src="../static/js/highlight.js"></script> -->
-    <!-- <script src="../static/js/key_ver3.js"></script> -->
-    <!-- <script src="pop.js"></script> -->
+    <div>
+        <p id="offscreen-text" class="offscreen-text"></p>
+        <p id="text" class="text"></p>
+    
+        <svg id="svg">
+        </svg>
+    
+        <input type="text" class="input" , id="input" />
+    </div>
     
     <!-- Flask 경로 -->
-    <script src="{{ url_for('static', filename='js/highlight.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/key_ver3.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/highlight.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/key_input.js') }}"></script>
     <script src="{{ url_for('static', filename='js/code_list.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/pop.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/code_img_click.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popinto.js') }}"></script>
+
 
 
 </body>
