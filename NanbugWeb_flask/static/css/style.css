@@ -39,25 +39,33 @@
 }
 /* -----------------------------메인 비디오 재생------------------------------------ */
 /* -----------------------------메이페이지 버튼--------------------------------------- */
-
+body{
+    background-color: #000;
+}
 .mainBtn{
     background-color: #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
 }
 
 .main.button {
-    background-color: blue;  
+    background-color: rgb(39, 39, 168);  
     border: none;  
     color: white;  
     padding: 15px 30px;  
     text-align: center;  
     text-decoration: none;  
-    display: inline-block;  
+    /* display: inline-flex;   */
+    /* flex-direction: row; */
     font-size: 16px;  
-    margin: 48px 300px;  
+    /* margin: 48px 300px;   */
+    border-radius: 15px;
     cursor: pointer;  
   }
   .main.button:hover {
-    background-color: tomato;
+    background-color: rgb(235, 86, 106);
   }
 /* ------------------------------------------------------------------- */
 

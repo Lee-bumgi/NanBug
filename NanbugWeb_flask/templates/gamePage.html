@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME</title>
+
+    <!-- 키 입력시 팡 튀어나오는 거 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popinto.css') }}">
+    <script
+        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/easing/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenLite.min.js"></script>
+    <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-d538fb72-cd2c-e84e-f1eb-ff8472d6a75b"
+        crossorigin=""></script>
+</head>
+
+<body>
+    <!-- 6번 줄 -->
+    <audio class="play_audio mi_6-000 f0" src="../static/media/1-000_mi.mp3"></audio>
+    <audio class="play_audio fa_6-100 f1" src="../static/media/1-100_fa.mp3"></audio>
+    <audio class="play_audio fa_shap_6-010 f2" src="../static/media/1-010_fa_shap.mp3"></audio>
+    <audio class="play_audio sol_6-001 f3" src="../static/media/1-001_sol.mp3"></audio>
+
+    <!-- 5번 줄 -->
+    <audio class="play_audio la_5-000 e0" src="../static/media/2-000_la.mp3"></audio>
+    <audio class="play_audio la_shap_5-100 e1" src="../static/media/2-100_la_shap.mp3"></audio>
+    <audio class="play_audio si_5-010 e2" src="../static/media/2-010_si.mp3"></audio>
+    <audio class="play_audio do_5-001 e3" src="../static/media/2-001_do.mp3"></audio>
+
+    <!-- 4번 줄 -->
+    <audio class="play_audio re_4-000 d0" src="../static/media/3-000_re.mp3"></audio>
+    <audio class="play_audio re_shap_4-100 d1" src="../static/media/3-100_re_shap.mp3"></audio>
+    <audio class="play_audio mi_4-010 d2" src="../static/media/3-010_mi.mp3"></audio>
+    <audio class="play_audio fa_4-001 d3" src="../static/media/3-001_fa.mp3"></audio>
+
+    <!-- 3 번 줄 -->
+    <audio class="play_audio sol_3-000 c0" src="../static/media/4-000_sol.mp3"></audio>
+    <audio class="play_audio sol_shap_3-100 c1" src="../static/media/4-100_sol_shap.mp3"></audio>
+    <audio class="play_audio la_3-010 c2" src="../static/media/4-010_la.mp3"></audio>
+    <audio class="play_audio la_shap_3-001 c3" src="../static/media/4-001_la_shap.mp3"></audio>
+
+    <!-- 2번 줄 -->
+    <audio class="play_audio si_2-000 b0" src="../static/media/5-000_si.mp3"></audio>
+    <audio class="play_audio do_2-100 b1" src="../static/media/5-100_do.mp3"></audio>
+    <audio class="play_audio do_shap_2-010 b2" src="../static/media/5-010_do_shap.mp3"></audio>
+    <audio class="play_audio re_2-001 b3" src="../static/media/5-001_re.mp3"></audio>
+
+    <!-- 1번 줄 -->
+    <audio class="play_audio mi_1-000 a0" src="../static/media/6-000_mi.mp3"></audio>
+    <audio class="play_audio fa_1-100 a1" src="../static/media/6-100_fa.mp3"></audio>
+    <audio class="play_audio fa_shap_1-010 a2" src="../static/media/6-010_fa_shap.mp3"></audio>
+    <audio class="play_audio sol_1-001 a3" src="../static/media/6-001_sol.mp3"></audio>
+    <div>
+        <div>
+            <p id="offscreen-text" class="offscreen-text"></p>
+            <p id="text" class="text"></p>
+
+            <svg id="svg">
+            </svg>
+
+            <input type="text" class="input" , id="input" />
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/popinto.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/key_input_game.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/code_list.js') }}"></script>
+
+</body>
+
+</html>

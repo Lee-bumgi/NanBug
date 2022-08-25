@@ -5,22 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FREETRAINIG</title>
 
     <!-- Flask 경로 -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/train_style.css') }}">
 
-    <!-- 키 입력시 팡 튀어나오는 거 -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/popinto.css') }}">
-    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/CSSPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/easing/EasePack.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenLite.min.js"></script>
-    <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-d538fb72-cd2c-e84e-f1eb-ff8472d6a75b" crossorigin=""></script>
 </head>
 
 <body>
+
+<!-- 기타 소리 -->
     <!-- 6번 줄 -->
   <audio class="play_audio mi_6-000 f0" src="../static/media/1-000_mi.mp3"></audio>
   <audio class="play_audio fa_6-100 f1" src="../static/media/1-100_fa.mp3"></audio>
@@ -59,7 +53,7 @@
 
 
     <div class="container">
-        <a href="/" class="backspace bbutton">뒤로 가기</a>
+        <a href="/" class="backspace bbutton">B A C K</a>
         <div class="train_Video">
             <video autoplay loop muted>
                 <source src="../static/video/white.mp4" type="video/mp4">
@@ -70,18 +64,34 @@
         </div>
     </div>
 
-    <div class="img-group g">              
-
-        <!-- <img src="../static/picture/B.png" alt=""> -->
-        <img id="code_C" src="../static/picture/C.png" alt="">
-        <img id="code_D" src="../static/picture/D.png" alt="">
-        <img id="code_E" src="../static/picture/E.png" alt="">
-        <img id="code_F" src="../static/picture/F.png" alt="">
-        <img id="code_G" src="../static/picture/G.png" alt="">
-        <img id="code_A" src="../static/picture/A.png" alt="">
+    <div class="img-group g container">
+        <div class="fl_cen">
+            <img id="code_C"class="img_code" src="../static/picture/cord/C.png" alt="">
+            <h1 class="code_text text_c">C</h1>
+        </div>
+        <div class="fl_cen">
+            <img id="code_D"class="img_code" src="../static/picture/cord/D.png" alt="">
+            <h1 class="code_text text_d">D</h1>
+        </div>
+        <div class="fl_cen">
+            <img id="code_E"class="img_code" src="../static/picture/cord/E.png" alt="">
+            <h1 class="code_text text_e">E</h1>
+        </div>
+        <div class="fl_cen">
+            <img id="code_F"class="img_code" src="../static/picture/cord/F.png" alt="">
+            <h1 class="code_text text_f">F</h1>
+        </div>
+        <div class="fl_cen">
+            <img id="code_G"class="img_code" src="../static/picture/cord/G.png" alt="">
+            <h1 class="code_text text_g">G</h1>
+        </div>
+        <div class="fl_cen">
+            <img id="code_A"class="img_code" src="../static/picture/cord/A.png" alt="">
+            <h1 class="code_text text_a">A</h1>
+        </div>
     </div>
 
-    <div>
+    <!-- <div>
         <p id="offscreen-text" class="offscreen-text"></p>
         <p id="text" class="text"></p>
     
@@ -89,16 +99,13 @@
         </svg>
     
         <input type="text" class="input" , id="input" />
-    </div>
+    </div> -->
     
     <!-- Flask 경로 -->
     <!-- <script src="{{ url_for('static', filename='js/highlight.js') }}"></script> -->
     <script src="{{ url_for('static', filename='js/key_input.js') }}"></script>
     <script src="{{ url_for('static', filename='js/code_list.js') }}"></script>
     <script src="{{ url_for('static', filename='js/code_img_click.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/popinto.js') }}"></script>
-
-
 
 </body>
 

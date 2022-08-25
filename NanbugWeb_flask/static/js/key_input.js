@@ -9,7 +9,7 @@ let code_dict = {
 }
 
 // 연속 누름 검사
-let arr_string = []
+let string_stack = []
 
 // string_dict : 각 줄 중복 상태 검사
 let string_dict = {
@@ -21,34 +21,57 @@ let string_dict = {
     "f": false,
 }
 
-// timer 전역변수 선언
-let timer;
+// play_timer 전역변수 선언
+let play_timer; // 음악재생시 사용할 타이머
+let arr_timer;
 
-// timer 함수 실행되면 데이터 리셋하는 함수
+// play_timer 함수 실행되면 데이터 리셋하는 함수
 let reset_dict = function () {
-        code_dict = {
-            "a": 0,
-            "b": 0,
-            "c": 0,
-            "d": 0,
-            "e": 0,
-            "f": 0,
-        }
-        arr_string = []
-        string_dict = {
-            "a": false,
-            "b": false,
-            "c": false,
-            "d": false,
-            "e": false,
-            "f": false,
-        }
-        console.log("리셋!")  
+    code_dict = {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0,
+        "f": 0,
+    }
+    string_stack = []
+    string_dict = {
+        "a": false,
+        "b": false,
+        "c": false,
+        "d": false,
+        "e": false,
+        "f": false,
+    }
+    console.log("리셋!")
 }
 
 // 줄과 플렛이 잠시 머무르는 변수
 let state_string = "";
 let state_plat = 0;
+
+// code 글자 클릭하는 이벤트 리스너
+let text_c = document.querySelector(".text_c")
+let text_d = document.querySelector(".text_d")
+let text_e = document.querySelector(".text_e")
+let text_f = document.querySelector(".text_f")
+let text_g = document.querySelector(".text_g")
+let text_a = document.querySelector(".text_a")
+
+let code_text = document.querySelectorAll(".code_text");
+let img_code = document.querySelectorAll(".img_code");
+
+for (let i = 0; i < code_text.length; i++) {
+    code_text[i].addEventListener("click", function (e) {
+        e.preventDefault;
+        // code_dict.previousSibling.click()
+        console.log("클릭!")
+        this.classList.remove("bounce");
+        this.offsetWidth = this.offsetWidth;
+        this.classList.add("bounce");
+    });
+}
 
 // code_dict, code 비교 함수 code_display함수의 간결화때문에 사용
 let code_jdg = function (arr, code) {
@@ -61,16 +84,22 @@ let code_display = function (arr) {
     if (Object.values(string_dict).toString == [true, true, true, true, true, true].toString) {
         if (code_jdg(arr, code_c)) {
             console.log("code_c")
+            text_c.click();
         } else if (code_jdg(arr, code_d)) {
             console.log("code_d")
+            text_d.click();
         } else if (code_jdg(arr, code_e)) {
             console.log("code_e")
+            text_e.click();
         } else if (code_jdg(arr, code_f)) {
             console.log("code_f")
+            text_f.click();
         } else if (code_jdg(arr, code_g)) {
             console.log("code_g")
+            text_g.click();
         } else if (code_jdg(arr, code_a)) {
             console.log("code_a")
+            text_a.click();
         } else {
             console.log("noncode")
         }
@@ -94,30 +123,30 @@ let play_process = function (state_string, state_plat) {
     // try catch try에서 오류나면 catch로 진입
     try {
         // 첫번째 입력시 타이머 시작
-        if (arr_string.length == 0) {
-            timer = setTimeout(reset_dict, 5000);
+        if (string_stack.length == 0) {
+            play_timer = setTimeout(reset_dict, 5000);
             console.log("타이머시작!")
         }
 
-        // 입력된 문자 Object 형태로 만들기
+        // 입력된 string_arr Object 형태로 만들기
         code_dict[state_string] = state_plat;
 
         // 입력 중복 검사
         string_dict[state_string] = (string_dict[state_string] == false) ? true : false
 
         // 입력수 누적
-        arr_string.push(state_string)
+        string_stack.push(state_string)
 
         // 음악재생
         play_music(state_string, code_dict[state_string])
         console.log(code_dict)
 
         // 6번 입력시 코드판단
-        if (arr_string.length == 6) {
+        if (string_stack.length == 6) {
             console.log("(타이머 & code) 초기화")
-            clearTimeout(timer);
+            clearTimeout(play_timer);
             code_display(code_dict)
-            arr_string = []
+            string_stack = []
             string_dict = {
                 "a": false,
                 "b": false,
@@ -133,20 +162,52 @@ let play_process = function (state_string, state_plat) {
     }
 }
 
+let string_arr = [];
+let num_arr = [];
+let start_timer;
+let end_timer;
+
 // 키보드 입력시 실행 함수
 let input_key = function (e) {
     if (Object.is(Number(e.key), NaN)) {
         // 키보드 입력값이 숫자가 아닐때
         state_string = e.key;
+        if (Object.keys(code_dict).includes(state_string)) {
+            string_arr.push(state_string);
+            console.log(string_arr)
+            if(string_arr.length>6){
+                string_arr = [];
+                console.log("너무많이입력해서 초기화")
+            }
+        } else {
+            console.log("이상한거입력하지마쇼")
+        }
     } else {
         // 키보드 입력값이 숫자일때
-        state_plat = Number(e.key);
-
+        if (string_arr.length == 0) {
+            console.log("숫자먼저입력금지")
+        } else {
+            state_plat = Number(e.key);
+            num_arr.push(state_plat)
+            console.log(num_arr)
+        }
         // 프로세스 진행
-        try {
-            play_process(state_string, Number(e.key));
-        } catch {
-            console.log("첫오류")
+        if ((num_arr.length == string_arr.length) && (string_arr.length != 0)) {
+            let temp = (string_arr.length == 1) ? "정상입력" : "중복입력"
+            console.log(temp)
+            for (let i = 0; i < string_arr.length; i++) {
+                if (i == 0) {
+                    start_timer = new Date();
+                }
+                play_process(string_arr[i], num_arr[i]);
+                if (i == (string_arr.length - 1)) {
+                    end_timer = new Date()
+                    let get_time = end_timer - start_timer
+                    console.log("재생시간", get_time)
+                }
+            }
+            string_arr = [];
+            num_arr = [];
         }
         state_string = "";
         state_plat = 0;
@@ -154,14 +215,3 @@ let input_key = function (e) {
 }
 
 document.addEventListener("keydown", input_key);
-let browserPoint = (event)=>{
-    console.log(`브라우저 좌표 : (${event.pageX}, ${event.pageY})`);
-}
-let clientPoint = (event) =>{
-    console.log(`화면 좌표 : (${event.clientX}, ${event.clientY})`);
-}
-document.addEventListener('click',e=>{
-    browserPoint(e);
-    clientPoint(e);
-});
-
