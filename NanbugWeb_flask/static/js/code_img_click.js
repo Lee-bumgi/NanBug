@@ -11,42 +11,42 @@ let code_A = document.querySelector("#code_A")
 code_C.addEventListener("click", function(){
     for(let i = 0;i <6;i++){
         setTimeout(() => {
-            play_music(Object.keys(code_c)[i],Object.values(code_c)[i])
+            play_music(Object.keys(code_c)[i]+Object.values(code_c)[i])
         }, (pt_sum-(i*pt)));
     }
 });
 code_D.addEventListener("click", function(){
     for(let i = 0;i <6;i++){
         setTimeout(() => {
-            play_music(Object.keys(code_c)[i],Object.values(code_d)[i])
+            play_music(Object.keys(code_c)[i]+Object.values(code_d)[i])
         }, (pt_sum-(i*pt)));
     }
 });
 code_E.addEventListener("click", function(){
     for(let i = 0;i <6;i++){
         setTimeout(() => {
-            play_music(Object.keys(code_c)[i],Object.values(code_e)[i])
+            play_music(Object.keys(code_c)[i]+Object.values(code_e)[i])
         }, (pt_sum-(i*pt)));
     }
 });
 code_F.addEventListener("click", function(){
     for(let i = 0;i <6;i++){
         setTimeout(() => {
-            play_music(Object.keys(code_c)[i],Object.values(code_f)[i])
+            play_music(Object.keys(code_c)[i]+Object.values(code_f)[i])
         }, (pt_sum-(i*pt)));
     }
 });
 code_G.addEventListener("click", function(){
     for(let i = 0;i <6;i++){
         setTimeout(() => {
-            play_music(Object.keys(code_c)[i],Object.values(code_g)[i])
+            play_music(Object.keys(code_c)[i]+Object.values(code_g)[i])
         }, (pt_sum-(i*pt)));
     }
 });
 code_A.addEventListener("click", function(){
     for(let i = 0;i <6;i++){
         setTimeout(() => {
-            play_music(Object.keys(code_c)[i],Object.values(code_a)[i])
+            play_music(Object.keys(code_c)[i]+Object.values(code_a)[i])
         }, (pt_sum-(i*pt)));
     }
 });

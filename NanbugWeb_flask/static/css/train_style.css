@@ -1,9 +1,14 @@
 /* ---------------------------- 뒤로가기 버튼 --------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nanum+Gothic&display=swap');
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     background-color: #000;
-    font-family: 'Indie Flower', 'Nanum Gothic', sans-serif;
+    font-family: 'BMJUA', sans-serif;
 }
 
 .container {
@@ -12,10 +17,10 @@ body {
 
 .backspace {
     border-radius: 10px;
-    background-color: cadetblue;
+    background-color: #EDB13F;
     border: none;
     color: white;
-    padding: 15px 5px 5px 5px;
+    padding: 20px 5px 0px 5px;
     width: 130px;
     height: 38px;
     text-align: center;

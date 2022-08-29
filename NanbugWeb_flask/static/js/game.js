@@ -1,3 +1,13 @@
+const vibration = (target) => {
+  target.classList.add("vibration");
+
+  setTimeout(function() {
+    target.classList.remove("vibration");
+  }, 400);
+}
+
+//document.querySelector("#text > span")
+//----------------------------------------------
 const selectSVG = (id) => {
   const el = document.getElementById(id);
   return new SVGElement(el);
@@ -186,7 +196,14 @@ const addLetter = (char, i) => {
   letters[i] = { offScreen: oLetter, onScreen: letter, char: char };
   animateLetterIn(letter);
   addDecor(oLetter, color);
+
+  
+
 };
+
+
+
+
 
 const addLetters = (value) => {
   value.forEach((char, i) => {
@@ -198,7 +215,7 @@ const addLetters = (value) => {
     if (letters[i] === undefined) {
       addLetter(char, i);
     }
-  });
+  });  
 };
 
 const animateLetterOut = (letter, i) => {
@@ -233,6 +250,39 @@ const onInputChange = () => {
   resizeLetters();
 };
 
+let code_ran = ['c','d','e','f','g','a']
+// let ran_code = function(){
+  
+  
+// }
+// game 만들기
+let play_game = ()=>{
+  let ran_num = parseInt((Math.random()*5)+1)
+  console.log("game")
+  input.value = code_ran[ran_num]
+  input.click()
+  // setTimeout(()=>{
+  //   play_game()
+  // },500)
+}
+
+let start_num = function(){
+  console.log("출력")
+  for(let i = 3; i>=0; i--){
+    setTimeout(()=>{
+      console.log(i)
+      input.value = `${(i==0) ? "": i }`;
+      input.click()
+    },(3000-(i*1000)))
+    setTimeout(()=>{
+      play_game()
+    },4000)
+  }
+}
+
+
+
+
 const keyup = (e) => {
   if (runPrompt) {
     input.value = "";
@@ -240,16 +290,28 @@ const keyup = (e) => {
   }
   onInputChange();
 };
-
+let st_ti;
+let en_ti;
 const addPrompt = (i) => {
   setTimeout(() => {
     console.log("start")
     if (runPrompt && prompt[i]) {
+      if(i==0){
+        st_ti = new Date()
+      } else if (i==prompt.length-1) {
+        en_ti = new Date()
+        setTimeout(()=>{
+          input.click()
+          start_num()
+        },(en_ti-st_ti)/2)
+      }
       input.value = input.value + prompt[i];
       onInputChange();
       addPrompt(i + 1);
     }
   }, 300);
+
+ 
 };
 
 let temp_str = "";
@@ -283,3 +345,4 @@ input.addEventListener("click", keyup);
 document.addEventListener("keydown", test_fun)
 input.focus();
 addPrompt(0);
+// input.click()
