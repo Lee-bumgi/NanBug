@@ -15,9 +15,30 @@ body {
     display: flex;
 }
 
+.container_next{
+    display: flex;
+    justify-content: right;
+    margin-top: 5%;
+}
+
+#prev {
+    /* display: none; */
+    visibility: hidden;
+}
+
+/* .page1 {
+    /* display: none; */
+/* } */
+.page2 {
+    display: none;
+}
+.page3 {
+    display: none;
+}
+
 .backspace {
     border-radius: 10px;
-    background-color: #EDB13F;
+    background-color: rgb(39, 39, 168);
     border: none;
     color: white;
     padding: 20px 5px 0px 5px;
@@ -36,7 +57,7 @@ body {
 }
 
 .backspace.bbutton:hover {
-    background-color: bisque;
+    background-color: rgb(235, 86, 106);
 }
 
 /* ---------------------------- 뒤로가기 버튼 --------------------------------------- */

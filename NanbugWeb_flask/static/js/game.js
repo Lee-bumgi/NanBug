@@ -6,7 +6,7 @@ const vibration = (target) => {
   }, 400);
 }
 
-//document.querySelector("#text > span")
+document.querySelector("#text > span")
 //----------------------------------------------
 const selectSVG = (id) => {
   const el = document.getElementById(id);
@@ -50,7 +50,7 @@ let height = window.innerHeight;
 let textSize = 0;
 let textCenter = 0;
 const letters = [];
-const prompt = ["s", "t", "a", "r", "t", " ", "g", "a", "m", "e"];
+const prompt = ["S", "T", "A", "R", "T", " ", "G", "A", "M", "E"];
 let runPrompt = true;
 
 const resizePage = () => {
@@ -196,14 +196,7 @@ const addLetter = (char, i) => {
   letters[i] = { offScreen: oLetter, onScreen: letter, char: char };
   animateLetterIn(letter);
   addDecor(oLetter, color);
-
-  
-
 };
-
-
-
-
 
 const addLetters = (value) => {
   value.forEach((char, i) => {
@@ -215,7 +208,7 @@ const addLetters = (value) => {
     if (letters[i] === undefined) {
       addLetter(char, i);
     }
-  });  
+  });
 };
 
 const animateLetterOut = (letter, i) => {
@@ -244,22 +237,26 @@ const removeLetters = (value) => {
 };
 // "".toUpperCase
 const onInputChange = () => {
-  const value = input.value === "" ? [] : input.value.toUpperCase().split("");
+  const value = input.value === "" ? [] : input.value.split("");
   addLetters(value);
   removeLetters(value);
   resizeLetters();
 };
 
-let code_ran = ['c','d','e','f','g','a']
+let code_ran = ['c','d','e','g','a','a7','am','b7','c7','d7','dm','e7','em','g7']
 // let ran_code = function(){
   
   
 // }
 // game 만들기
 let play_game = ()=>{
-  let ran_num = parseInt((Math.random()*5)+1)
+  let ran_num = parseInt((Math.random()*code_ran.length-1)+1)
   console.log("game")
-  input.value = code_ran[ran_num]
+  if(code_ran[ran_num].length==1){
+    input.value = code_ran[ran_num][0].toUpperCase()
+  } else {
+    input.value = code_ran[ran_num][0].toUpperCase() + code_ran[ran_num][1]
+  }
   input.click()
   // setTimeout(()=>{
   //   play_game()
@@ -308,10 +305,9 @@ const addPrompt = (i) => {
       input.value = input.value + prompt[i];
       onInputChange();
       addPrompt(i + 1);
+
     }
   }, 300);
-
- 
 };
 
 let temp_str = "";

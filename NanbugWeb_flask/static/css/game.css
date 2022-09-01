@@ -71,12 +71,7 @@
     cursor: pointer;
   }
   
-  /* .box.vibration {
-    animation: vibration .1s infinite;
-    animation: vibration .4s ease  alternate;
-  } */
-
-  .vibration {
+  .box.vibration {
     animation: vibration .1s infinite;
     /* animation: vibration .4s ease  alternate; */
   }

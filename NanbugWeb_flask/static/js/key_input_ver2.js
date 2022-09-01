@@ -78,6 +78,22 @@ let text_f = document.querySelector(".text_f")
 let text_g = document.querySelector(".text_g")
 let text_a = document.querySelector(".text_a")
 
+let text_c7 = document.querySelector(".text_c7")
+let text_d7 = document.querySelector(".text_d7")
+let text_e7 = document.querySelector(".text_e7")
+let text_f7 = document.querySelector(".text_f7")
+let text_g7 = document.querySelector(".text_g7")
+let text_a7 = document.querySelector(".text_a7")
+
+let text_b7 = document.querySelector(".text_b7")
+let text_dm = document.querySelector(".text_dm")
+let text_em = document.querySelector(".text_em")
+let text_fm = document.querySelector(".text_fm")
+let text_am = document.querySelector(".text_am")
+
+
+
+
 let code_text = document.querySelectorAll(".code_text");
 let img_code = document.querySelectorAll(".img_code");
 
@@ -98,11 +114,6 @@ let stack_play = [];
 // play_timer 전역변수 선언
 let play_timer; // 음악재생시 사용할 타이머
 
-// code_dict, code 비교 함수 code_display함수의 간결화때문에 사용
-let code_jdg = function (arr, code) {
-    return JSON.stringify(arr) === JSON.stringify(code);
-}
-
 let reset_stack = ()=>{
     stack_play=[]
     console.log("리셋")
@@ -111,14 +122,19 @@ let reset_stack = ()=>{
 // 음악 출력 함수
 let play_music = function (key) {
     /** @type {HTMLAudioElement} */
-    let audio = audio_dict[key];
-    audio.currentTime = 0;
-    audio.play();
+    try{
+        let audio = audio_dict[key];
+        audio.currentTime = 0;
+        audio.play();
+    } catch {
+        console.log("플뮤오류")
+    }
+    
 }
 
 let input_key = function(e){
     if (stack_play.length==0){
-        play_timer = setTimeout(reset_stack, 5000);
+        play_timer = setTimeout(reset_stack, 2000);
         console.log("타이머시작!");
     }
     //키보드 맵핑 변환
@@ -127,11 +143,15 @@ let input_key = function(e){
     console.log("키보드",e.key,"맵핑값",tmep_str)
 
     //플레이
-    new Promise(() => play_music(tmep_str));
+    try {
+        new Promise(() => play_music(tmep_str));
+
+    } catch {
+        console.log("test")
+    }
     
     //코드검사
     string_dict[tmep_str[0]] = (string_dict[tmep_str[0]] == false) ? true : false
-    let bool = Object.values(string_dict);
     if(stack_play.length==6) {
         console.log("코드판단&리셋")
         clearTimeout(play_timer);
@@ -142,34 +162,31 @@ let input_key = function(e){
         }
         stack_play = [];
         console.log(arr)
-        if (code_jdg(arr, code_c)) {
-            console.log("code_c")
-            text_c.click();
-        } else if (code_jdg(arr, code_d)) {
-            console.log("code_d")
-            text_d.click();
-        } else if (code_jdg(arr, code_e)) {
-            console.log("code_e")
-            text_e.click();
-        } else if (code_jdg(arr, code_f)) {
-            console.log("code_f")
-            text_f.click();
-        } else if (code_jdg(arr, code_g)) {
-            console.log("code_g")
-            text_g.click();
-        } else if (code_jdg(arr, code_a)) {
-            console.log("code_a")
-            text_a.click();
-        } else {
-            console.log("noncode")
+        let bool = true;
+        for (let i=0;i<code_list_keys.length;i++){
+            if ( JSON.stringify(arr) === JSON.stringify(code_list[code_list_keys[i]])){
+                console.log(code_list_keys[i]);
+                bool = false;
+                let click_text;
+                if(code_list_keys[i].length>6){
+                    click_text = document.querySelector(`.text_${code_list_keys[i].substring(5,7)}`)
+                    console.log(`.text_${code_list_keys[i].substring(5,7)}`)
+                } else {
+                    click_text = document.querySelector(`.text_${code_list_keys[i][5]}`)
+                    console.log(`.text_${code_list_keys[i][5]}`)
+                }
+                click_text.click();
+                break;
+            }
+        }
+        if(bool){
+            console.log('noncode');
         }
     }
-
-
-
-
-
-
 }
 
+
+
+
 document.addEventListener("keydown", input_key);
+// document.addEventListener("keydown", test_play);
